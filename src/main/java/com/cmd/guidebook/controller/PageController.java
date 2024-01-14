@@ -16,16 +16,21 @@ public class PageController {
     @Autowired
     private PageService pageService;
 
-    @GetMapping("/page/{id}")
-    public String viewPage(@PathVariable Long id, Model model) {
-        Page page = pageService.getPage(id);
-        model.addAttribute("page", page);
+    @GetMapping("/page")
+    public String viewPage() {
         return "";
     }
 
     @PostMapping("/page")
     public String createPage(@ModelAttribute("page") Page page) {
         pageService.createPage(page);
+        return "";
+    }
+
+    @GetMapping("/page/{id}")
+    public String viewPage(@PathVariable Long id, Model model) {
+        Page page = pageService.getPage(id);
+        model.addAttribute("page", page);
         return "";
     }
 
